@@ -14,13 +14,13 @@ def getNewData():
 
     #get non repeated member list
     wb=pd.read_excel(LOCATION, sheet_name=CURRENT_SHEET)
-    MEM=list(set(wb['Player Name'].values))
+    MEM=list(set(wb['Player'].values))
     MEM.sort()
 
     #clone sheet's data
-    temp1=wb['Player Name'].values
-    temp2=wb['Damage Dealt'].values
-    temp3=wb['Note'].values
+    temp1=wb['Player'].values
+    temp2=wb['Damage'].values
+    temp3=wb['Overkill?'].values
 
     #find out actual number of attempts (doesn't count carried-over attempts)
     for name in MEM:
@@ -30,7 +30,7 @@ def getNewData():
         for j in range(len(MEM)):
             if (MEM[j]==temp1[i]): #player name matches the current member's count search
                 DMG[j]+=temp2[i]
-                if(temp3[i]=='overkill'):
+                if(temp3[i]=='y'):
                     pass
                 else:
                     ATTEMPTS[j]+=1
@@ -42,18 +42,16 @@ def getOldData():
     MEM_OLD=[]
     ATTEMPTS_OLD=[]
     DMG_OLD=[]
-    temp1=[]
-    temp2=[]
 
     #get non repeated MEM_OLDber list
     wb_old=pd.read_excel(LOCATION, sheet_name=OLD_SHEET)
-    MEM_OLD=list(set(wb_old['Player Name'].values))
+    MEM_OLD=list(set(wb_old['Player'].values))
     MEM_OLD.sort()
 
     #clone sheet's data
-    temp1=wb_old['Player Name'].values
-    temp2=wb_old['Damage Dealt'].values
-    temp3=wb_old['Note'].values
+    temp1=wb_old['Player'].values
+    temp2=wb_old['Damage'].values
+    temp3=wb_old['Overkill?'].values
 
     #find out actual number of ATTEMPTS_OLD (doesn't count carried-over ATTEMPTS_OLD)
     for name in MEM_OLD:
@@ -63,7 +61,7 @@ def getOldData():
         for j in range(len(MEM_OLD)):
             if (MEM_OLD[j]==temp1[i]): #player name matches the current MEM_OLDber's count search
                 DMG_OLD[j]+=temp2[i]
-                if(temp3[i]=='overkill'):
+                if(temp3[i]=='y'):
                     pass
                 else:
                     ATTEMPTS_OLD[j]+=1
@@ -99,9 +97,7 @@ def compareResults(MEM_OLD, MEM, AVG_OLD, AVG, DMG_OLD, DMG, type="AVERAGE"):
                 pass
     return RESULT
 
-#only for Feb CB
-# AVG_OLD = [1182328,1315201,596946,998331,1245677,1040863,438701,1477537,1923116,716683,1489071,1050596,1878995,848699,1164543,1778727,1234709,879743,1787895,1266997,2015631,827070,1122113,1984612,962522,499892,1602814,974992,1853755,1455754]
-# MEM_OLD = ['Aeongie','Anjelly','Aused','Easan','FLus','Glacel','Half','Hirako','Hironnad','IAMvne','Ivy','Izaku','Kako','Kokkoro','Lucas','Mumrik','Nefaerien','NiR','Nyara☆','RCA','Raz','Rezael','Tatsumi','TomX204','Yukiito','Yuuki','kcireu','pat1413','⬛⬛ Mya ⬛⬛','紫shino']
+################################################################################################################################
 
 #get data
 MEM, DMG, ATTEMPTS = getNewData()
