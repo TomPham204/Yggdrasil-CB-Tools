@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Clan Resource Spreadsheet.xlsx")
-CURRENT_SHEET = 'February 2022 Battle Log'
+CURRENT_SHEET = 'March 2022 Battle Log'
 OLD_SHEET = 'February 2022 Battle Log'
 
 def getNewData():
@@ -20,7 +20,7 @@ def getNewData():
     #clone sheet's data
     temp1=wb['Player'].values
     temp2=wb['Damage'].values
-    temp3=wb['Overkill?'].values
+    temp3=wb['OvK'].values
 
     #find out actual number of attempts (doesn't count carried-over attempts)
     for name in MEM:
@@ -51,7 +51,7 @@ def getOldData():
     #clone sheet's data
     temp1=wb_old['Player'].values
     temp2=wb_old['Damage'].values
-    temp3=wb_old['Overkill?'].values
+    temp3=wb_old['OvK'].values
 
     #find out actual number of ATTEMPTS_OLD (doesn't count carried-over ATTEMPTS_OLD)
     for name in MEM_OLD:
