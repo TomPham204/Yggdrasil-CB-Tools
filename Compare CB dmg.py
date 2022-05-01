@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Clan Resource Spreadsheet.xlsx")
-CURRENT_SHEET = 'March 2022 Battle Log'
-OLD_SHEET = 'February 2022 Battle Log'
+CURRENT_SHEET = 'April 2022'
+OLD_SHEET = 'March 2022 Battle Log'
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
@@ -11,6 +11,7 @@ def getNewData():
     DMG=[]
     temp1=[]
     temp2=[]
+    temp3=[]
 
     #get non repeated member list
     wb=pd.read_excel(LOCATION, sheet_name=CURRENT_SHEET)
