@@ -1,0 +1,15 @@
+Prerequisite: installed python, text editor like vscode
+
+Download the spreadsheet in ".xlsx" format
+
+Open the folder using a text editor like Sublime/VSCode/... I use VSCode
+
+Navigate to .py code file
+
+Look at line 4 and line 5, change the name accordingly to the CB log page
+
+Run the code (Ctrl+F5 for VSCode)
+
+The screen will show the comparison results. One for total dmg, one for average dmg
+
+If the script runs into some errors, contact me via discord Tom204#9518
