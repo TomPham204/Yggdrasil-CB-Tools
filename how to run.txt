@@ -1,0 +1,7 @@
+have the model generate encodings on train dataset
+python encode_faces.py --dataset dataset --encodings encodings.pickle
+
+use the encodings to regconize faces on test dataset
+python recognize_faces_image.py --encodings encodings.pickle --image examples/1.png
+
+Source: https://pyimagesearch.com/2018/06/18/face-recognition-with-opencv-python-and-deep-learning/
