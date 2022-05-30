@@ -1,8 +1,8 @@
 import os
 import pandas as pd
-LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Clan Resource Spreadsheet.xlsx")
-CURRENT_SHEET = 'April 2022'
-OLD_SHEET = 'March 2022 Battle Log'
+LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Resource.xlsx")
+CURRENT_SHEET = 'May 2022'
+OLD_SHEET = 'April 2022'
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
