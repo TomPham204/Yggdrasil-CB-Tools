@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Resource.xlsx")
-CURRENT_SHEET = 'May 2022'
-OLD_SHEET = 'April 2022'
+CURRENT_SHEET = 'June 2022'
+OLD_SHEET = 'May 2022'
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
@@ -98,6 +98,25 @@ def compareResults(MEM_OLD, MEM, AVG_OLD, AVG, DMG_OLD, DMG, type="AVERAGE"):
                 pass
     return RESULT
 
+def printResult(MEM, RESULT_AVG, RESULT_TOTAL):
+    #print result
+    print("\nComparing average damage")
+    for i in range(len(MEM)):
+        print(MEM[i],':', RESULT_AVG[i])
+
+    print("\nComparing total damage")
+    for i in range(len(MEM)):
+        print(MEM[i],':', RESULT_TOTAL[i])
+
+def printVerify(MEM, MEM_OLD):
+    print('OLD:', len(MEM_OLD), 'CURRENT:', len(MEM))
+    print('OLD MEM')
+    for i in range(len(MEM_OLD)):
+        print(MEM_OLD[i])
+    print('\nCURRENT MEM')
+    for i in range(len(MEM)):
+        print(MEM[i])
+
 ################################################################################################################################
 
 #get data
@@ -112,10 +131,9 @@ RESULT_AVG=compareResults(MEM_OLD, MEM, AVG_OLD, AVG, DMG_OLD, DMG, type="AVERAG
 RESULT_TOTAL=compareResults(MEM_OLD, MEM, AVG_OLD, AVG, DMG_OLD, DMG, type="TOTAL")
 
 #print result
-print("Comparing average damage")
-for i in range(len(MEM)):
-    print(MEM[i],':', RESULT_AVG[i])
+printVerify(MEM,MEM_OLD)
+printResult(MEM, RESULT_AVG, RESULT_TOTAL)
 
-print("\nComparing total damage")
-for i in range(len(MEM)):
-    print(MEM[i],':', RESULT_TOTAL[i])
+
+
+
