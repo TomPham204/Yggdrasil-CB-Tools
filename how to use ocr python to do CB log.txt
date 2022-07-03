@@ -1,0 +1,7 @@
+**It only supports player name and dmg dealt**
+
+Need python and additional libraries (see the imports at the beginning of the file)
+Take png screenshots of the screen as the sample file in folder screenshots
+Name your photos log0.png, log1.png,... log9.png (why only 10 photos? Cuz I like 10)
+Put the photos in folder screenshots
+Run the file ocr.py with your favorite IDE (suggested VSCode)
