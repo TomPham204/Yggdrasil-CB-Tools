@@ -1,6 +1,5 @@
 import pytesseract
 import PIL.Image
-import subprocess
 
 myconfig = r"--psm 3 --oem 3"
 location =[]
@@ -20,24 +19,27 @@ def getData(temp):
             numbers.append(word)
          except ValueError:
             pass
+   names=names[::-1]
+   numbers=numbers[::-1]
 
 for i in range(10):
-   location.append( "./temp/test"+str(i)+".png")
+   location.append( "./temp/log"+str(i)+".png")
+print(location)
 
 for item in location:
    try:
       text = pytesseract.image_to_string(PIL.Image.open(item), config=myconfig)
       temp = text.strip().rstrip('\n').split()
-      print(temp)
       getData(temp)
-      names=names[::-1]
-      numbers=numbers[::-1]
+
       print("\n")
       for item in names:
          print(item)
       print("\n")
       for item in numbers:
          print(item)
+      names=[]
+      numbers=[]
    except:
-      print('Image not found at location')
+      print('Image not found: '+item)
       pass
