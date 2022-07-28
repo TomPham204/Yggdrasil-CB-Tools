@@ -25,6 +25,8 @@ def processData(temp):
             mostMatchedName=getMostMatched(word)
             if(mostMatchedName!='0'):
                names.append(mostMatchedName)
+            else:
+               dump.append(word)
          else:
             #if word is a number, check if it's dmg
             try:
@@ -77,12 +79,11 @@ def printResult():
       print(item) #print list of dmg dmgs line by line in order
    
 def printDump():
-   global dump
    print("\n")
-   print('Dumps: ',dump)
+   print('Dump: ',dump)
 
 def getOCRData():
-   for i in range(10):
+   for i in range(20):
       location.append( "./screenshots/log"+str(i)+".png") #a list of addresses of image files
 
    for item in location:
@@ -93,6 +94,11 @@ def getOCRData():
       except:
          print('Not found: '+item) #if image not found, notify
 
+def cleanup():
+   global mem, names, dmgs, dump, result_number, result_name
+   del mem, names, dmgs, dump, result_number, result_name
+
 getOCRData()
 printResult()
-printDump()
+# printDump()
+cleanup()
