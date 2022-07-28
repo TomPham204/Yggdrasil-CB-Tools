@@ -11,6 +11,7 @@ dump=[]
 
 result_name=[]
 result_number=[]
+
 mem=["Aused","Easan","Eiwaz","Gudako","Hirako","Hironnad","IAMvne","Izaku","Kako","kcireu","Kokkoro","Kuo","Light","Lucas","Marin","masterhand","Muzo","Nefaerien","Noon","Nyara☆","pat1413","Raz","RCA","Rezael","Tatsumi","TomX204","Yuuki","Yukiito","Yuusha","紫shino"] #change mem list to the current respective list every month
 
 def processData(temp):
@@ -33,8 +34,7 @@ def processData(temp):
                else:
                   dump.append(word)
             except:
-               dump.append(word)
-                  
+               dump.append(word) 
 
    #flip the lists to make it chronological
    names=names[::-1]
@@ -63,6 +63,7 @@ def getMostMatched(name1):
       if(matchCount > highestMatchCount):
          mostMatchedName=copy.deepcopy(name2)
          highestMatchCount=copy.deepcopy(matchCount)
+         
    return mostMatchedName
 
 def printResult():
