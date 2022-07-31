@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Resource.xlsx")
-CURRENT_SHEET = 'June 2022'
-OLD_SHEET = 'May 2022'
+CURRENT_SHEET = 'July 2022'
+OLD_SHEET = 'June 2022'
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
@@ -109,7 +109,7 @@ def printResult(MEM, RESULT_AVG, RESULT_TOTAL):
         print(MEM[i],':', RESULT_TOTAL[i])
 
 def printVerify(MEM, MEM_OLD):
-    print('OLD:', len(MEM_OLD), 'CURRENT:', len(MEM))
+    print('\nOLD:', len(MEM_OLD), 'CURRENT:', len(MEM))
     print('OLD MEM')
     for i in range(len(MEM_OLD)):
         print(MEM_OLD[i])
@@ -133,7 +133,3 @@ RESULT_TOTAL=compareResults(MEM_OLD, MEM, AVG_OLD, AVG, DMG_OLD, DMG, type="TOTA
 #print result
 printVerify(MEM,MEM_OLD)
 printResult(MEM, RESULT_AVG, RESULT_TOTAL)
-
-
-
-

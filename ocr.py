@@ -2,31 +2,42 @@ import copy
 import pytesseract
 import PIL.Image
 
-myconfig = r"--psm 3 --oem 3" #config for OCR engine
+myconfig = r"--psm 3 --oem 3" #don't change, config for OCR engine
 location=[]
-
 names=[]
 dmgs=[]
 dump=[]
+bosses=[]
 
 result_name=[]
 result_number=[]
+result_boss=[]
+
 
 mem=["Aused","Easan","Eiwaz","Gudako","Hirako","Hironnad","IAMvne","Izaku","Kako","kcireu","Kokkoro","Kuo","Light","Lucas","Marin","masterhand","Muzo","Nefaerien","Noon","Nyara☆","pat1413","Raz","RCA","Rezael","Tatsumi","TomX204","Yuuki","Yukiito","Yuusha","紫shino"] #change mem list to the current respective list every month
+boss=["Wyvern", "Wild Gryphon", "Prisma Hen", "Ulfhedinn", "Medusa"] #change boss list to the current respective list every month
 
 def processData(temp):
-   global mem, names, dmgs, dump, result_number, result_name
+   global mem, names, bosses, dmgs, dump, result_number, result_name, result_boss
    for word in temp:
       if(word in mem):
-         names.append(word) #normal case
+         names.append(word)
+      elif(word in boss):
+         bosses.append(word)
       else:
          #if last character of word is not a number -> try comparing letter by letter
          if not(word[-1].isnumeric()):
-            mostMatchedName=getMostMatched(word)
-            if(mostMatchedName!='0'):
+            mostMatchedName=getMostMatched(word, len(word), mem)
+            if(mostMatchedName in mem):
                names.append(mostMatchedName)
             else:
-               dump.append(word)
+               mostMatchedBoss=getMostMatched(word, len(word), boss)
+               if(mostMatchedBoss in boss):
+                  bosses.append(mostMatchedName)
+               if(mostMatchedBoss=='0'):
+                  dump.append(word)
+               else:
+                  bosses.append(word)
          else:
             #if word is a number, check if it's dmg
             try:
@@ -41,17 +52,27 @@ def processData(temp):
    #flip the lists to make it chronological
    names=names[::-1]
    dmgs=dmgs[::-1]
+   bosses=bosses[::-1]
+   bosses[:]=(value for value in bosses if value!='0')
+
    result_name+=names
    result_number+=dmgs
+   result_boss+=bosses
+
    names=[]
    dmgs=[]
+   bosses=[]
 
-def getMostMatched(name1):
-   global mem
-   highestMatchCount=4
+def getMostMatched(name1, length, pickedFrom):
    mostMatchedName='0'
+   highestMatchCount=4
+   
+   if(length<5):
+      highestMatchCount=2
+   else:
+      highestMatchCount=4
 
-   for name2 in mem:
+   for name2 in pickedFrom:
       matchCount=0
       startingPoint2=0
       startingPoint1=0
@@ -69,21 +90,24 @@ def getMostMatched(name1):
    return mostMatchedName
 
 def printResult():
-   global mem, names, dmgs, result_number, result_name
-   print('\n',len(result_name),'names', ' ',len(result_number),'dmgs')
+   global result_number, result_name, result_boss
+   print('\n',len(result_name),'names', ' ',len(result_number),'dmgs',' ',len(result_boss), 'bosses')
    print("\n")
    for item in result_name:
       print(item) #print list of names line by line in order
    print("\n")
    for item in result_number:
-      print(item) #print list of dmg dmgs line by line in order
+      print(item) #print list of dmgs line by line in order
+   print("\n")
+   for item in result_boss:
+      print(item) #print list of bosses line by line in order
    
 def printDump():
    print("\n")
    print('Dump: ',dump)
 
 def getOCRData():
-   for i in range(20):
+   for i in range(15):
       location.append( "./screenshots/log"+str(i)+".png") #a list of addresses of image files
 
    for item in location:
@@ -95,8 +119,8 @@ def getOCRData():
          print('Not found: '+item) #if image not found, notify
 
 def cleanup():
-   global mem, names, dmgs, dump, result_number, result_name
-   del mem, names, dmgs, dump, result_number, result_name
+   global mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
+   del mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
 
 getOCRData()
 printResult()
