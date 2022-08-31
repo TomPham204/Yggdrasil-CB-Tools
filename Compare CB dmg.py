@@ -1,8 +1,12 @@
 import os
 import pandas as pd
+from math import nan, isnan
+
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Resource.xlsx")
-CURRENT_SHEET = 'July 2022'
-OLD_SHEET = 'June 2022'
+CURRENT_SHEET = 'August 2022'
+OLD_SHEET = 'July 2022'
+CURRENT_LAST_ROW=496-1 #-1 because the first row is header row
+OLD_LAST_ROW=494-1
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
@@ -14,7 +18,7 @@ def getNewData():
     temp3=[]
 
     #get non repeated member list
-    wb=pd.read_excel(LOCATION, sheet_name=CURRENT_SHEET)
+    wb=pd.read_excel(LOCATION, sheet_name=CURRENT_SHEET, nrows=CURRENT_LAST_ROW)
     MEM=list(set(wb['Player'].values))
     MEM.sort()
 
@@ -44,8 +48,8 @@ def getOldData():
     ATTEMPTS_OLD=[]
     DMG_OLD=[]
 
-    #get non repeated MEM_OLDber list
-    wb_old=pd.read_excel(LOCATION, sheet_name=OLD_SHEET)
+    #get non repeated member_old list
+    wb_old=pd.read_excel(LOCATION, sheet_name=OLD_SHEET, nrows=OLD_LAST_ROW)
     MEM_OLD=list(set(wb_old['Player'].values))
     MEM_OLD.sort()
 
@@ -109,7 +113,7 @@ def printResult(MEM, RESULT_AVG, RESULT_TOTAL):
         print(MEM[i],':', RESULT_TOTAL[i])
 
 def printVerify(MEM, MEM_OLD):
-    print('\nOLD:', len(MEM_OLD), 'CURRENT:', len(MEM))
+    print('\nOLD:', len(MEM_OLD), 'CURRENT:', len(MEM),'\n')
     print('OLD MEM')
     for i in range(len(MEM_OLD)):
         print(MEM_OLD[i])

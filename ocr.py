@@ -19,6 +19,7 @@ boss=["Goblin", "Rai-Rai", "Wraithlord", "Gargoyle", "Glutton"] #change boss lis
 
 def processData(temp):
    global mem, names, bosses, dmgs, dump, result_number, result_name, result_boss
+
    for word in temp:
       if(word in mem):
          names.append(word)
@@ -91,7 +92,9 @@ def getMostMatched(name1, length, pickedFrom):
 
 def printResult():
    global result_number, result_name, result_boss
+
    print('\n',len(result_name),'names', ' ',len(result_number),'dmgs',' ',len(result_boss), 'bosses')
+   
    print("\n")
    for item in result_name:
       print(item) #print list of names line by line in order
