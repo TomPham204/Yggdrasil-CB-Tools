@@ -3,10 +3,10 @@ import pandas as pd
 from math import nan, isnan
 
 LOCATION = str(os.path.dirname(os.path.abspath(__file__)) + "/Yggdrasil Resource.xlsx")
-CURRENT_SHEET = 'August 2022'
-OLD_SHEET = 'July 2022'
-CURRENT_LAST_ROW=496-1 #-1 because the first row is header row
-OLD_LAST_ROW=494-1
+CURRENT_SHEET = 'September 2022'
+OLD_SHEET = 'August 2022'
+CURRENT_LAST_ROW=508-1 #-1 because the first row is header row
+OLD_LAST_ROW=496-1
 
 def getNewData():
     global LOCATION, CURRENT_SHEET
