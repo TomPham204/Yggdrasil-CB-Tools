@@ -110,7 +110,7 @@ def printDump():
    print("\n")
    print('Dump: ',dump)
 
-def getOCRData():
+def getOCRDataAndProcess():
    for i in range(15):
       location.append( "./screenshots/log"+str(i)+".png") #a list of addresses of image files
 
@@ -118,17 +118,21 @@ def getOCRData():
       try:
          text = pytesseract.image_to_string(PIL.Image.open(item), config=myconfig) #invoke OCR engine
          temp = text.strip().rstrip('\n').split() #unprocessed text
+         temp.remove("Wild")
          processData(temp) #to get processed names and dmgs lists
       except:
          print('Not found: '+item) #if image not found, notify
    
-   result_boss.remove('Wild')
+   try: 
+      result_boss.remove("Wild")
+   except:
+      pass
 
 def cleanup():
    global mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
    del mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
 
-getOCRData()
+getOCRDataAndProcess()
 printResult()
 # printDump()
 cleanup()
