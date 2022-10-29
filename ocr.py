@@ -61,10 +61,6 @@ def processData(temp):
    result_number+=dmgs
    result_boss+=bosses
 
-   for i in range(len(result_boss)):
-      if result_boss[i]=='Wild':
-         result_boss.pop(i)
-
    names=[]
    dmgs=[]
    bosses=[]
@@ -125,6 +121,8 @@ def getOCRData():
          processData(temp) #to get processed names and dmgs lists
       except:
          print('Not found: '+item) #if image not found, notify
+   
+   result_boss.remove('Wild')
 
 def cleanup():
    global mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
