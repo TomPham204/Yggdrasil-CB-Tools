@@ -118,15 +118,14 @@ def getOCRDataAndProcess():
       try:
          text = pytesseract.image_to_string(PIL.Image.open(item), config=myconfig) #invoke OCR engine
          temp = text.strip().rstrip('\n').split() #unprocessed text
-         temp.remove("Wild")
          processData(temp) #to get processed names and dmgs lists
       except:
          print('Not found: '+item) #if image not found, notify
    
-   try: 
-      result_boss.remove("Wild")
-   except:
-      pass
+      try: 
+         result_boss.remove("Wild")
+      except:
+         pass
 
 def cleanup():
    global mem, names, dmgs, bosses, dump, result_number, result_name, result_boss
