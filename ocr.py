@@ -120,7 +120,7 @@ def getOCRDataAndProcess():
          temp = text.strip().rstrip('\n').split() #unprocessed text
          processData(temp) #to get processed names and dmgs lists
       except:
-         print('Not found: '+item) #if image not found, notify
+         print('Not found: ' + item) #if image not found, notify
    
       try: 
          result_boss.remove("Wild")
