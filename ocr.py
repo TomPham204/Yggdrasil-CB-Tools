@@ -16,7 +16,7 @@ result_boss=[]
 
 mem=["Aused","Easan","Eiwaz","Gudako","Hirako","Hironnad","IAMvne","Izaku","Kako","kcireu","Kokkoro","Kuo","Light","Lucas","Marin","masterhand","Muzo","Nefaerien","Noon","Nyara☆","pat1413","Raz","RCA","Rezael","Tatsumi","TomX204","Yuuki","Yukiito","Yuusha","紫shino"] #change mem list to the current respective list every month
 
-boss=["Goblin", "Rai-Rai", "Needle", "Cyclops", "Lesathapult", "Wyvern", "Gryphon", "Prisma", "Ulfhedinn", "Medusa", "Wraithlord", "Gargoyle", "Glutton", "Sloth", "Orc", "Titanoturtle", "Orleon", "Torpedon", "Mushussu", "Night", "Mesarthim", "Lapahn", "Bear", "Minotaurus", "Raiden", "Pigs", "Tritem", "Drake", "Nepterion", "Karkinos", "Horn", "Sagittarius", "Algedi", "Aquarius", "Valkyrie"]
+boss=["Goblin", "Rai-Rai", "Needle", "Cyclops", "Lesathapult", "Wyvern", "Gryphon", "Prisma", "Ulfhedinn", "Medusa", "Wraithlord", "Gargoyle", "Glutton", "Sloth", "Orc", "Titanoturtle", "Orleon", "Torpedon", "Mushussu", "Night", "Mesarthim", "Lapahn", "Bear", "Minotaurus", "Raiden", "Pigs", "Tritem", "Drake", "Nepterion", "Karkinos", "Horn", "Sagittarius", "Algedi", "Aquarius", "Valkyrie", "Senri", "Mushussu"]
 
 def processData(temp):
    global mem, names, bosses, dmgs, dump, result_number, result_name, result_boss
