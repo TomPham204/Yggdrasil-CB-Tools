@@ -16,7 +16,7 @@ result_name=[]
 result_number=[]
 
 
-mem=["Aused","Easan","Eiwaz","Gudako","Hirako","Hironnad","IAMvne","Izaku","Kako","kcireu","Kokkoro","Kuo","Light","Lucas","Marin","masterhand","Muzo","Nefaerien","Noon","Nyara☆","JonathanR5","Raz","RCA","Rezael","Tatsumi","TomX204","Yuuki","Yukiito","Yuusha","紫shino"] #change mem list to the current respective list every month
+mem=["Aused","c cruz 2","Easan","Eiwaz","Gudako","Hirako","Hironnad","IAMvne","Izaku","JonathanR5","Kako","kcireu","Kokkoro","Kuo","Light","Marin","masterhand","Muzo","Nefaerien","Noon","Nyara☆","Raz","Rezael","Tatsumi","TomX204","Yukiito","Yuuki","Yuusha","紫shino"] #change mem list to the current respective list every month
 
 def processData(temp):
    global result_name
